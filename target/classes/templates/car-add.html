@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Добавление информации</h1></div>
+<form th:action="${'/manager/car/add'}" method="post" th:object="${car}">
+    <table border="1" class="styled-table">
+        <tr>
+            <th>Модель</th>
+            <th>Серия</th>
+            <th>Фото</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="ModelCar" placeholder="Введите модель" >
+                <div style="color: red" th:if="${#fields.hasErrors('ModelCar')}" th:errors="*{ModelCar}"/>
+            </td>
+            <td>
+                <input type="text" name="SeriesCar" placeholder="Введите серию">
+                <div style="color: red" th:if="${#fields.hasErrors('SeriesCar')}" th:errors="*{SeriesCar}"/>
+            </td>
+            <td>
+                <input type="text" name="UrlPhoto" placeholder="Укажите ссылку на фото">
+                <div style="color: red" th:if="${#fields.hasErrors('UrlPhoto')}" th:errors="*{UrlPhoto}"/>
+            </td>
+        </tr>
+
+    </table>
+    <div align="center"><button type="submit" class="green">Добавить информацию</button></div>
+</form>
+</body>
+</html>

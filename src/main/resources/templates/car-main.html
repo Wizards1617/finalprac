@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Информация об автомобиле</h1></div>
+<table  border="1" class="styled-table">
+    <tr>
+        <th>Модель</th>
+        <th>Серия</th>
+        <th>Фото</th>
+    </tr> <!--ряд с ячейками заголовков-->
+    <tr th:each="el : ${car}">
+        <td th:text="${el.modelCar}"></td>
+        <td th:text="${el.seriesCar}"></td>
+        <td><img th:src="${el.urlPhoto}"/></td>
+
+      <!--  <img th:text="${el.urlPhoto}"/>-->
+
+        </div>
+        <td><a th:href="'/manager/car/' + ${el.id} + '/edit'" class="edit">Редактировать</a></td>
+        <td><a th:href="'/manager/car/' + ${el.id} + '/remove'" class="delete">Удалить</a></td>
+    </tr>
+
+</table>
+<p></p>
+<center><a href="/manager/car/add" class="button7">Создать</a></center>
+<br>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Отзывы</h1></div>
+<table  border="1" class="styled-table">
+    <tr>
+        <th>Описание</th>
+        <th>Оценка</th>
+        <th>Пользователь</th>
+    </tr> <!--ряд с ячейками заголовков-->
+    <tr th:each="el : ${feedbacks}">
+        <td th:text="${el.description}"></td>
+        <td th:text="${el.rate}"></td>
+        <td>
+            <from th:each="pasp : ${el.getModelUser()}">
+                <p th:text="${pasp.getUsername()}"/>
+            </from>
+        </td>
+
+
+
+        </div>
+        <td><a th:href="'/manager/feedback/' + ${el.id} + '/edit'" class="edit">Редактировать</a></td>
+        <td><a th:href="'/manager/feedback/' + ${el.id} + '/remove'" class="delete">Удалить</a></td>
+    </tr>
+</table>
+<p></p>
+<center><a href="/manager/feedback/add" class="button7">Создать</a></center>
+<br>
+</body>
+</html>

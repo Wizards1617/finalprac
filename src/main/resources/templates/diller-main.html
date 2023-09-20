@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Информация о дилере</h1></div>
+<table  border="1" class="styled-table">
+    <tr>
+        <th>Название</th>
+        <th>График работы</th>
+        <th>Адрес</th>
+    </tr> <!--ряд с ячейками заголовков-->
+    <tr th:each="el : ${diller}">
+        <td th:text="${el.nameDiller}"></td>
+        <td th:text="${el.workSchedule}"></td>
+        <td th:text="${el.adressDiller}"></td>
+
+
+        </div>
+        <td><a th:href="'/manager/diller/' + ${el.id} + '/edit'" class="edit">Редактировать</a></td>
+        <td><a th:href="'/manager/diller/' + ${el.id} + '/remove'" class="delete">Удалить</a></td>
+    </tr>
+
+</table>
+<p></p>
+<center><a href="/manager/diller/add" class="button7">Создать</a></center>
+<br>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Добавление отзыва</h1></div>
+<form th:action="${'/manager/order/add'}" method="post" th:object="${order}">
+    <table border="1" class="styled-table">
+        <tr>
+            <th>Дата</th>
+            <th>Пользователь</th>
+            <th>Автомобиль</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="date" placeholder="Введите дату" >
+                <div style="color: red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"/>
+            </td>
+            <td>
+                <select  name="username">
+                    <div th:each="element : ${modelUser}">
+                        <option th:text="${element.username}"></option>
+                    </div>
+                </select>
+            </td>
+            <td>
+                <select  name="modelCar">
+                    <div th:each="elements : ${Cars}">
+                        <option th:text="${elements.modelCar}"></option>
+                    </div>
+                </select>
+            </td>
+        </tr>
+
+    </table>
+    <div align="center"><button type="submit" class="green">Добавить отзыв</button></div>
+</form>
+</body>
+</html>

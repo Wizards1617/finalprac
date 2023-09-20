@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Заказ</h1></div>
+<table  border="1" class="styled-table">
+    <tr>
+        <th>Дата</th>
+        <th>Пользователь</th>
+        <th>Автомобиль</th>
+    </tr> <!--ряд с ячейками заголовков-->
+    <tr th:each="el : ${orders}">
+        <td th:text="${el.date}"></td>
+        <td>
+            <from th:each="pasp : ${el.getModelUser()}">
+                <p th:text="${pasp.getUsername()}"/>
+            </from>
+        </td>
+        <td>
+            <from th:each="pasp : ${el.getCar()}">
+                <p th:text="${pasp.getModelCar()}"/>
+            </from>
+        </td>
+
+
+
+        </div>
+        <td><a th:href="'/manager/order/' + ${el.id} + '/edit'" class="edit">Редактировать</a></td>
+        <td><a th:href="'/manager/order/' + ${el.id} + '/remove'" class="delete">Удалить</a></td>
+    </tr>
+</table>
+<p></p>
+<center><a href="/manager/order/add" class="button7">Создать</a></center>
+<br>
+</body>
+</html>

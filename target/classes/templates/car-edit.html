@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Редактирование авто</h1></div>
+<form method="post" th:object="${car}">
+    <table border="1" class="styled-table">
+        <tr>
+            <th>Модель</th>
+            <th>Серия</th>
+            <th>Фото</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="modelCar" placeholder="Введите модель" th:field="*{modelCar}" id="modelCar" th:value="${modelCar}" >
+                <div style="color: red" th:if="${#fields.hasErrors('modelCar')}" th:errors="*{modelCar}"/>
+            </td>
+            <td>
+                <input type="text" name="SeriesCar" placeholder="Введите серию" th:field="*{SeriesCar}" id="SeriesCar" th:value="${SeriesCar}">
+                <div style="color: red" th:if="${#fields.hasErrors('SeriesCar')}" th:errors="*{SeriesCar}"/>
+            </td>
+            <td>
+                <input type="text" name="UrlPhoto" placeholder="Укажите ссылку" th:field="*{UrlPhoto}" id="UrlPhoto" th:value="${UrlPhoto}">
+                <div style="color: red" th:if="${#fields.hasErrors('UrlPhoto')}" th:errors="*{UrlPhoto}"/>
+            </td>
+        </tr>
+
+    </table>
+    <div align="center"><button type="submit" class="green">Изменить информацию</button></div>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class=ex1><h1>Добавление отзыва</h1></div>
+<form th:action="${'/manager/feedback/add'}" method="post" th:object="${feedback}">
+    <table border="1" class="styled-table">
+        <tr>
+            <th>Описание</th>
+            <th>Оценка</th>
+            <th>Пользователь</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="description" placeholder="Введите описание" >
+                <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
+            </td>
+            <td>
+                <input type="text" name="rate" placeholder="Введите оценку" >
+                <div style="color: red" th:if="${#fields.hasErrors('rate')}" th:errors="*{rate}"/>
+            </td>
+            <td>
+                <select  name="username">
+                    <div th:each="element : ${modelUser}">
+                        <option th:text="${element.username}"></option>
+                    </div>
+                </select>
+            </td>
+        </tr>
+
+    </table>
+    <div align="center"><button type="submit" class="green">Добавить отзыв</button></div>
+</form>
+</body>
+</html>
